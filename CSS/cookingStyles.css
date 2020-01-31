@@ -1,0 +1,67 @@
+/* Sets all element margin and padding to 0 */
+* {margin:0;padding:0}
+
+/* Background Colours */
+body, header{background-color:orange}
+nav, footer{background-color:brown}
+main{background-color:pink}
+section{background-color:blue}
+
+
+/* Text Properties */
+h1 {display:inline;color:brown;float:left}
+footer>a {color:pink}
+ul,ol{list-style-position:none}
+h4{font-size:12px;margin-bottom:5px;margin-left:10px}
+.chineseSpacing {margin:10px}
+.pastaText {margin-bottom:30px;margin-left:10px;margin-right:10px;margin-top:10px}
+
+
+
+
+
+/* Image Properties */
+.italianImages {width:140px;height:140px;margin-right:50px;margin-top:50px}
+.imageBanner {width:550px;height:90px;float:right}
+#studentImage {width:160px;height:120px;float:left;margin-bottom:20px;margin-right:20px}
+.imageSpice {width:190px;height:140px;margin:10px}
+.pizzaImage {width:100px;height:70px;margin-left:10px;margin-top:10px;margin-right:10px}
+.indianCurry {width:300px;height:200px;margin-left:20px;margin-bottom:20px;float:right}
+.curryButton {width:120px;height:50px;margin-right:10px}
+#largeThai {width:300px;height:300px;margin-right:10px;margin-bottom:10px;float:left}
+.smallThai {width:90px;height:90px;margin-right:10px}
+.indianImages {width:150px;height:200px}
+
+
+
+/* Margins */
+body {margin:auto}
+h1 {margin-left:30px;margin-top:50px}
+main  {margin-top:10px;margin-bottom:10px}
+h2, form {margin:10px}
+
+
+
+/* Padding */
+main>p {padding:10px}
+footer {padding-left:10px;padding-top:20px}
+
+
+/* Positioning (Float, Display and Clear) */
+nav, main, footer {display:block;clear:both}
+
+/* Element Sizes */
+body {width:900px}
+header {height:90px}
+footer {height:90px}
+nav {height:34px}
+
+
+/* Navigation List Properties */
+nav ul{list-style-type:none}
+nav ul li{float:left;width:80px;text-align:center}
+nav ul li a{display:block;padding:8px}
+nav ul li a:hover{background-color:#000;color:White}
+
+
+

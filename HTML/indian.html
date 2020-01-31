@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+<title>Indian Cooking</title>
+<link rel="stylesheet" type="text/css" href="../CSS/cookingStyles.css">
+<script>
+<!-- Javascript function used to create a rollover image-->
+
+function displayCurry1A(my_image)
+
+{my_image.src='../Images/indian3.jpg'}
+
+function displayCurry1B(my_image)
+
+{my_image.src ='../Images/indian1.jpg';}
+
+function displayCurry2A(my_image)
+{my_image.src='../Images/indian4.jpg';}
+
+function displayCurry2B(my_image)
+{my_image.src='../Images/indian2.jpg';}
+
+</script>
+</head>
+
+<body>
+
+<!-- Page Header -->
+<header>
+<h1>Cooking for Students</h1>
+<img class="imageBanner" src="../Images/cookingBanner.jpg">
+</header>
+
+
+<!-- Navigation Bar -->
+<nav>
+<ul>
+<li><a href="home.html"> Home   </a></li>
+<li><a href="italian.html"> Italian   </a></li>
+<li><a href="indian.html">  Indian  </a></li>
+<li><a href="thai.html">  Thai  </a></li>
+<li><a href="survey.html"> Survey   </a></li>
+</ul>
+</nav>
+
+<!-- The main content of the page -->
+<main style="padding-top:1px;padding-bottom:10px">
+    
+<section style="margin:10px">
+    <h2>Indian Cooking</h2>
+</section>    
+
+<div style="float:left;width:150px">
+
+
+    
+<img class="sportImage" src="../Images/indian1.jpg" onmouseover="displayCurry1A(this)" onmouseout="displayCurry1B(this)">
+<img class="sportImage" src="../Images/indian2.jpg" onmouseover="displayCurry2A(this)" onmouseout="displayCurry2B(this)">
+
+</div>
+
+<div style="margin-left:160px">
+    <p>Indian food consists of a wide variety of regional cuisines native to the Indian subcontinent. Given the range of climate, culture, ethnic groups, and occupations, these cuisines vary substantially from each other.  Each uses locally available spices, herbs, vegetables, and fruits.<br><br>
+    Indian food is also heavily influenced by religion, in particular Hindu and traditions.  Middle Eastern and Central Asian influences have also occurred on North Indian cuisine from the years of Mughal rule.  Indian cuisine is still evolving, as a result of the nation's cultural interactions with other societies.<br><br>
+    Historical incidents such as foreign invasions, trade relations, and colonialism have played a role in introducing certain foods to this country. For example, potato was brought to India by the Portuguese.<br><br>
+    Indian cuisine has shaped the history of international relations; "the spice trade" between India and Europe was the primary catalyst for Europe's Age of Discovery. Spices were bought from India and traded around Europe and Asia.<br><br>
+    Indian cuisine has influenced other cuisines across the world, especially those from Europe, the Middle East, North Africa, sub-Saharan Africa, Southeast Asia, the British Isles, Fiji, and the Caribbean.
+    </p><br>
+    <p><a href="indianCurries.html">Three Curry Recipes</a></p>
+<br>
+    <p><a href="indianSpices.html">Spices Explained</a></p>
+</div>
+    
+</main>
+
+<!-- Page Footer -->
+<footer>
+<p>Links to famous tv chefs</p>
+<a href="https://www.jamieoliver.com"> Jamie Oliver   </a><br>
+<a href="https://www.gordonramsay.com"> Gordon Ramsay   </a><br>
+<a href="https://www.jamesmartinchef.co.uk"> James Martin   </a>
+</footer>
+
+</body>
+</html>
