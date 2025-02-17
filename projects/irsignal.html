@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Coming Soon</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+        }
+
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background: #121212;
+            color: #fff;
+            text-align: center;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 600px;
+            padding: 20px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 10px;
+            backdrop-filter: blur(10px);
+            box-shadow: 0 0 20px rgba(255, 255, 255, 0.1);
+        }
+
+        h1 {
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+        }
+
+        p {
+            font-size: 1.2rem;
+            opacity: 0.8;
+        }
+
+        .loading-dots::after {
+            content: ".";
+            animation: dots 1.5s steps(3, end) infinite;
+        }
+
+        @keyframes dots {
+            0% { content: "."; }
+            33% { content: ".."; }
+            66% { content: "..."; }
+        }
+
+        .back-home {
+            display: inline-block;
+            margin-top: 20px;
+            padding: 10px 20px;
+            font-size: 1rem;
+            background: #007bff;
+            color: #fff;
+            text-decoration: none;
+            border-radius: 5px;
+            transition: background 0.3s ease;
+        }
+
+        .back-home:hover {
+            background: #0056b3;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1> Project Details Coming Soon<span class="loading-dots"></span></h1>
+        <p>I'm currently working on adding more details about this project. Check back soon!</p>
+        <a href="/" class="back-home">Back to Home</a>
+    </div>
+</body>
+</html>

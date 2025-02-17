@@ -1,0 +1,269 @@
+/* Full-screen hero section */
+.hero {
+    position: relative;
+    width: 100%;
+    height: 100vh;
+    overflow: hidden;
+    height: 100vh;
+    background-image: url('images/blurredBackground.png'); /* Update with your image name */
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed; /* Enables parallax effect */
+    z-index: -1; /* Places it behind everything */
+}
+
+.overlay {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    color: white;
+ 
+}
+
+.overlay h1 {
+    font-size: 3rem;
+}
+
+.overlay p {
+    font-size: 1.5rem;
+}
+
+
+
+
+
+.content {
+
+    background-color: #292828;
+    color: white;
+    
+
+}
+
+body {
+    
+    background-color: #292828;
+}
+
+
+
+.profile{
+
+    display:flex;
+    justify-content: center;
+    gap: 100px;
+    margin-top: 100px;
+    align-items: center;
+    min-height: 500px;
+    text-align: center;
+    
+
+}
+
+.selfie img {
+    width: 200px;  /* Adjust size as needed */
+    height: 200px; /* Ensure it's square */
+    object-fit: contain; /* Prevent distortion */
+    border-radius: 50%; /* Makes it a perfect circle */
+    display: block;
+    border: 4px solid #fff; /* White border */
+    box-shadow: 0 0 10px rgba(0,0,0,0.2); /* Soft shadow */
+    object-position: 50% 50%;
+    
+
+}
+
+
+.bio{
+    width:800px; /* Adjust as needed */
+    max-width: 100%; /* Ensures responsiveness */
+    word-wrap: break-word; /* Ensures long words don't overflow */
+    text-align: left;
+    font-size: large;
+    
+    
+
+}
+
+
+
+
+.Education{
+    margin-top: 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    gap: 20px;
+
+}
+.Education_section{
+    margin-top: 100px;
+}
+.Education_section h2 {
+
+    text-align: center;  
+}
+
+.Education_section div {
+  border-bottom: 1px solid #ddd; /* Light gray line */
+  padding-bottom: 15px;
+  
+}
+
+.Education_section div:last-child {
+  border-bottom: none; /* Removes the line after the last job */
+}
+
+
+.Projects_section {
+
+    position: relative;
+    padding: 20px;
+    overflow: hidden;
+    text-align: center;
+    
+  }
+  
+  .scroll-container {
+    display: flex;
+    align-items: center;
+    position: relative;
+    justify-content: center;
+  }
+  
+  .Projects {
+    display: flex;
+    overflow-x: scroll;
+    scroll-behavior: smooth;
+    gap: 20px;
+    padding: 10px;
+    text-align: center;
+    /* Hide scrollbar */
+    scrollbar-width: none; /* For Firefox */
+    
+
+  }
+
+  .Projects h2{
+    text-align: center;
+  }
+  
+  .Projects::-webkit-scrollbar {
+    display: none; /* For Chrome, Safari, and Edge */
+  }
+  
+  .Projects-item {
+    flex: 0 0 300px;
+    width: 300px;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    background-color: #302f2f;
+    border: 2px solid transparent;
+    transition: border 0.3s ease-in, box-shadow 0.3s ease-out;
+    text-decoration: none; /* Removes underlines */
+    color: inherit; /* Keeps the original text color */
+    display: block; /* Ensures the entire div is clickable */
+  }
+
+  .Projects-item:hover {
+    border: 2px solid #eaebec;  /* Blue border on hover */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);  /* Optional shadow for a nice effect */
+    border-radius: 8px; /* Optional rounded corners */
+}
+  .Projects-item img{
+    width: 100%;
+    height: 300px;
+      
+  }
+
+  button {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 50px;
+    height: 50px;
+    border: none;
+    border-radius: 50%;
+    background: rgba(0, 0, 0, 0.5); /* Semi-transparent dark background */
+    color: white;
+    font-size: 24px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    z-index: 10;
+  }
+  
+  button:hover {
+    background: rgba(0, 0, 0, 0.7); /* Darker on hover */
+  }
+  
+  #scrollLeftBtn {
+    left: 10px;
+  }
+  
+  #scrollRightBtn {
+    right: 10px;
+  }
+  
+
+section:not(.hero):not(.content):not(.Projects_section) {
+     /* Light background color */
+    background-color: #302f2f;
+    padding: 20px; /* Adds space inside the box */
+    border-radius: 15px; /* Rounds the corners */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Optional: Adds a subtle shadow */
+    margin: 20px auto; /* Adds spacing between sections and centers them */
+    
+}
+
+.Work_Experience_Section{
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    gap: 20px;
+    justify-content: center;
+}
+
+.content h2{
+    font-size: xx-large;
+
+
+}
+
+
+.content h3{
+
+    font-size: x-large;
+}
+
+.content p:not(.bio p){
+    font-size: small;
+    font-family:'Courier New', Courier, monospace;
+
+}
+
+
+
+.work_experience_content{
+
+  max-width: 800px;
+  text-align: center;
+  margin: 0 auto;
+
+}
+
+.Work_Experience_Section div {
+  border-bottom: 1px solid #ddd; /* Light gray line */
+  padding-bottom: 15px;
+  margin-bottom: 20px;
+}
+
+.Work_Experience_Section div:last-child {
+  border-bottom: none; /* Removes the line after the last job */
+}
