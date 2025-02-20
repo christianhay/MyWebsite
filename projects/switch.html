@@ -3,78 +3,195 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Coming Soon</title>
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: Arial, sans-serif;
-        }
-
-        body {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
-            background: #121212;
-            color: #fff;
-            text-align: center;
-            padding: 20px;
-        }
-
-        .container {
-            max-width: 600px;
-            padding: 20px;
-            background: rgba(255, 255, 255, 0.1);
-            border-radius: 10px;
-            backdrop-filter: blur(10px);
-            box-shadow: 0 0 20px rgba(255, 255, 255, 0.1);
-        }
-
-        h1 {
-            font-size: 2.5rem;
-            margin-bottom: 10px;
-        }
-
-        p {
-            font-size: 1.2rem;
-            opacity: 0.8;
-        }
-
-        .loading-dots::after {
-            content: ".";
-            animation: dots 1.5s steps(3, end) infinite;
-        }
-
-        @keyframes dots {
-            0% { content: "."; }
-            33% { content: ".."; }
-            66% { content: "..."; }
-        }
-
-        .back-home {
-            display: inline-block;
-            margin-top: 20px;
-            padding: 10px 20px;
-            font-size: 1rem;
-            background: #007bff;
-            color: #fff;
-            text-decoration: none;
-            border-radius: 5px;
-            transition: background 0.3s ease;
-        }
-
-        .back-home:hover {
-            background: #0056b3;
-        }
-    </style>
+    <title>Project Name | Portfolio</title>
+    <link rel="stylesheet" href="../projectStyles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism-tomorrow.min.css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-c.min.js"></script>
 </head>
 <body>
-    <div class="container">
-        <h1> Project Details Coming Soon<span class="loading-dots"></span></h1>
-        <p>I'm currently working on adding more details about this project. Check back soon!</p>
-        <a href="/" class="back-home">Back to Home</a>
-    </div>
+
+    
+    
+        <section class="hero">
+        
+            
+            <div class="overlay">
+            <h1>IoT Smart Switch</h1>
+        </div>
+        
+
+        
+    </section>
+        
+
+        <section>
+        <div class="tech-stack">
+            <h3>Technologies Used</h3>
+            <div class="tech-list">
+                <span>ESP32</span>
+                <span>MQTT</span>
+                <span>ESP-NOW</span>
+                <span>C++</span>
+                <span>3D Printing</span>
+                <span>Home Assistant</span>
+            </div>
+        </div>
+    </section>
+
+
+        <section>
+        <div class="abstract">
+            <h3>Overview</h3>
+            <p>The IoT Smart Switch is a battery-powered wireless device designed to control smart home appliances such as 
+                plug sockets and light bulbs. Primarily intended for wall-mounting near doors, it allows users to toggle multiple 
+                lamps with a single press. Designed to resemble a standard light switch, it seamlessly blends into the home environment. <br><br>
+
+                The switch consists of a 3D-printed enclosure and button, housing an ESP32-WROOM development board and a battery. When pressed, 
+                it sends a signal via ESP-NOW to a nearby smart home hub, which then relays the message to a Home Assistant server using MQTT. 
+                Home Assistant automations, such as toggling a smart plug, can be configured to trigger upon receiving the MQTT message. 
+                </p>
+
+
+        </div>
+        </section>
+
+        <section>
+        <div>
+            <h3>Why's the hub necessary?</h3>
+            <p>
+                The hub is essential for maximizing battery life and minimizing delay. While the switch could 
+                function without a hub by sending MQTT messages directly to the Home Assistant server over WiFi, 
+                this approach has significant downsides. Maintaining a WiFi connection consumes a lot of power, meaning 
+                the battery would only last a few days—far from ideal for a wall-mounted device. <br> <br>
+
+                One way to extend battery life is by putting the switch into deep sleep, only waking it up to reestablish a WiFi 
+                connection when pressed. However, this introduces another issue: the process of reconnecting to WiFi and the Home 
+                Assistant MQTT broker takes about 10 seconds, creating an unacceptable delay between pressing the switch and turning 
+                on the lights. This completely undermines the device's convenience. <br> <br>
+
+                By introducing a hub, the switch can remain in deep sleep, preserving battery life. 
+                When pressed, it wakes up and communicates with the hub using ESP-NOW, a peer-to-peer protocol with minimal latency.
+                Since the hub is plugged into a power source, it can maintain a constant WiFi connection and instantly relay the ESP-NOW
+                message to the Home Assistant server, ensuring the lights respond without delay.  
+                                
+                
+              
+            </p>
+        </div>
+    </section>
+
+
+
+
+
+
+
+
+
+
+
+        <section>
+        
+            <h3>See the switch in action</h3>
+
+            <div class="in-action-container">
+
+
+            <div class="flex-container"><img src="../images/Projects/switch/mounted-switch.jpg" alt=""></div>
+
+            <div class="flex-container">
+                <video src="../images/Projects/switch/demo.mov" frameborder="0" autoplay loop muted></video>
+            </div>
+
+        </div>
+
+        
+    </section>
+
+        <section>
+        <div>
+            <h3>Exploded view of the Switch</h3>
+            <div class="exploded">
+                <video src="../images/Projects/switch/switch-exploded.mp4" frameborder="0" autoplay loop muted></video>
+            </div>
+
+
+        </div>
+    </section>
+
+
+
+
+        <section>
+        <div class="electronics">
+            
+            <h3>The Electronics</h3>
+            
+            <div class="electronics-container">
+            <div>    
+            <img src="../images/Projects/switch/open-switch.jpg" alt="">
+            </div>
+        
+            <div>
+                <img src="../images/Projects/switch/LED.jpg" alt="">
+            </div>
+        </div>
+
+            <div>
+                <p>The devlopment board has a power indicator LED which is always on even whilst in sleep mode. 
+                    This is wasteful and reduces the battery life significantly. I desoldered the LED to maximise
+                    battery life. 
+                </p>
+            </div>
+        </div>
+    </section>
+    
+
+    <section>
+
+        <div class="software">
+            <h3>Firmware</h3>
+            <p>The firmware is written in C++ and optimizes battery life by using the ESP32's
+                deep sleep functionality. When the button is pressed the device wakes up, 
+                sends a message to the hub over ESP-NOW, then goes back to sleep. <br> <br>
+            <strong> This snippet highlights the key logic behind the switch's functionality:</strong></p>
+
+        </div>
+
+        <pre class="language-c"><code>
+            
+    // Configure ESP-NOW broadcast peer
+    ESP_NOW_Broadcast_Peer broadcast_peer(ESPNOW_WIFI_CHANNEL, WIFI_IF_STA, NULL);
+
+    // Configure wake-up source (when the button is pressed)
+    esp_sleep_enable_ext0_wakeup((gpio_num_t)BUTTON_GPIO, LOW);
+
+    // Prepare message
+    char data[32];
+    snprintf(data, sizeof(data), "button 1 has been pressed #%lu", msg_count++);
+    Serial.printf("Broadcasting message: %s\n", data);
+
+    // Send message
+    if (!broadcast_peer.send_message((uint8_t *)data, sizeof(data))) {
+    Serial.println("Failed to broadcast message");
+    }
+
+    // Enter deep sleep mode
+    Serial.println("Going to sleep now...");
+    esp_deep_sleep_start();
+            
+            </code></pre>
+
+        <div class="links">
+            <a href="https://github.com/christianhay/smart-switch.git" target="_blank">View the full code on GitHub</a>
+        </div>
+    </section>
+
+    
+    <a href="../index.html" class="floating-back">Home</a>
+
+
+
 </body>
 </html>
