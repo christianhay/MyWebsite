@@ -3,78 +3,172 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Coming Soon</title>
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: Arial, sans-serif;
-        }
+    <title>Project Name | Portfolio</title>
+    <link rel="stylesheet" href="../projectStyles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism-tomorrow.min.css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-c.min.js"></script>
+<script src="../project-script.js"></script>
 
-        body {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
-            background: #121212;
-            color: #fff;
-            text-align: center;
-            padding: 20px;
-        }
-
-        .container {
-            max-width: 600px;
-            padding: 20px;
-            background: rgba(255, 255, 255, 0.1);
-            border-radius: 10px;
-            backdrop-filter: blur(10px);
-            box-shadow: 0 0 20px rgba(255, 255, 255, 0.1);
-        }
-
-        h1 {
-            font-size: 2.5rem;
-            margin-bottom: 10px;
-        }
-
-        p {
-            font-size: 1.2rem;
-            opacity: 0.8;
-        }
-
-        .loading-dots::after {
-            content: ".";
-            animation: dots 1.5s steps(3, end) infinite;
-        }
-
-        @keyframes dots {
-            0% { content: "."; }
-            33% { content: ".."; }
-            66% { content: "..."; }
-        }
-
-        .back-home {
-            display: inline-block;
-            margin-top: 20px;
-            padding: 10px 20px;
-            font-size: 1rem;
-            background: #007bff;
-            color: #fff;
-            text-decoration: none;
-            border-radius: 5px;
-            transition: background 0.3s ease;
-        }
-
-        .back-home:hover {
-            background: #0056b3;
-        }
-    </style>
 </head>
 <body>
-    <div class="container">
-        <h1> Project Details Coming Soon<span class="loading-dots"></span></h1>
-        <p>I'm currently working on adding more details about this project. Check back soon!</p>
-        <a href="/" class="back-home">Back to Home</a>
+
+    
+    <section class="hero" style="background-image: url('../images/Project-Thumbnails/Glasses.webp');">
+        <div class="blurred-bg"></div>
+        <h1>Smart Glasses</h1> 
+    </section>
+
+        <section>
+        <div class="tech-stack">
+            <h3>Technologies Used</h3>
+            <div class="tech-list">
+                <span>ESP32</span>
+                <span>PCB Design</span>
+                <span>CAD</span>
+                <span>C++</span>
+                <span>3D Printing</span>
+                <span>Soldering</span>
+            </div>
+        </div>
+    </section>
+
+    <div class="work-in-progress">
+        🚧 This project is a work in progress! More details will be added once my dissertation is finished. 🚧
     </div>
+    
+
+    <section class="overview">
+        <h3>Project Overview</h3>
+        <p>My final year dissertation focuses on programmable smart glasses, designed as an open platform for programmers and makers. 
+            Developing smart glasses typically requires PCB design, 3D modeling, and optical calibration, making it a complex project.</p>
+    
+        <p>This dissertation explores the creation of a programmable smart glasses product that allows users to 
+            develop and implement custom applications without the need to design and manufacture the hardware themselves.</p>
+    
+        <h4>Project Scope</h4>
+        <ul>
+            <li>Building an early prototype of the smart glasses.</li>
+            <li>Developing a fitness metrics application as a proof of concept.</li>
+            <li>Conducting user trials to gather feedback on usability and functionality.</li>
+            <li>Researching market potential and viable business models for the product.</li>
+        </ul>
+    
+        <p>This project aims to bridge the gap between hardware complexity and software innovation, 
+            enabling developers to experiment with smart glasses technology in a flexible and accessible way.</p>
+    </section>
+    
+    <section class="frame">
+        <h3>Prototype Frame</h3>
+        <p>This is the 3D model of the smart glasses frame, designed to house all electronic components while maintaining a lightweight structure.</p>
+    
+        <div class="image-grid">
+            <div>
+                <img src="../images/Projects/glasses/full-frame-cad.png" alt="Full 3D model of smart glasses" onclick="openLightbox(this.src)">
+                <p class="image-caption">Full 3D Model of Smart Glasses</p>
+            </div>
+            <div>
+                <img src="../images/Projects/glasses/full-frame-cad2.png" alt="Side view of frame" onclick="openLightbox(this.src)">
+                <p class="image-caption">Side View of the Frame</p>
+            </div>
+            <div>
+                <img src="../images/Projects/glasses/full-frame-cad-top.png" alt="Top view of frame" onclick="openLightbox(this.src)">
+                <p class="image-caption">Top View Showing Component Placement</p>
+            </div>
+        </div>
+        
+    </section>
+    
+    <section class="PCB">
+        <h3>PCB Design</h3>
+        <p>This project features a custom-designed PCB that integrates an ESP32 microcontroller directly onto the board, 
+            rather than relying on a pre-made development board. The PCB is designed to fit within the smart glasses 
+            frame while providing support for display, power management, and other essential components.</p>
+    
+        <div class="image-grid">
+            <div>
+                <img src="../images/Projects/glasses/Schematic.png" alt="Circuit Schematic" onclick="openLightbox(this.src)">
+                <p class="image-caption">Circuit Schematic of the PCB</p>
+            </div>
+            <div>
+                <img src="../images/Projects/glasses/PCB.png" alt="PCB Layout" onclick="openLightbox(this.src)">
+                <p class="image-caption">PCB Layout</p>
+            </div>
+            <div>
+                <img src="../images/Projects/glasses/PCB3D.png" alt="3D PCB render" onclick="openLightbox(this.src)">
+                <p class="image-caption">3D Render of the PCB</p>
+            </div>
+            <div>
+                <img src="../images/Projects/glasses/PCBmetal.png" alt="PCB with metallic finish" onclick="openLightbox(this.src)">
+                <p class="image-caption">Printed PCB</p>
+            </div>
+        </div>
+    
+        <p>The PCB has been fabricated and is currently undergoing assembly. The next steps involve finalizing the soldering of all components,  
+            testing power delivery and signal integrity, and integrating the board with the smart glasses frame.</p>
+    </section>
+    
+    
+
+    <section class="HUD">
+        <div>
+            <h3>Heads-Up Display</h3>
+
+            <p>The heads-up display (HUD) is achieved by reflecting a small display onto a beam splitter, allowing the user to see digital information overlaid on their real-world view.  
+                The image below illustrates the iterative development process, starting with a simple reflection test, followed by a series of progressively refined mounts.  
+                Each iteration improves optical clarity, and ease of integration until the final version is seamlessly housed within the smart glasses frame.</p>
+    
+            <div><img src="../images/Projects/glasses/hud-iteration.png" alt="HUD prototyping process"></div>
+    
+    
+            <br><br>
+    
+            <p>This image provides a first-person perspective of the prototype HUD in action, as seen by the wearer. The digital overlay appears in the 
+                user’s field of view, displaying real-time data while maintaining visibility of the surrounding environment.</p> 
+            <div><img src="../images/Projects/glasses/HUD.jpg" alt="POV view through the smart glasses"></div>
+            <br>
+            
+            <p>Blue acrylic was used for early prototyping due to its affordability and ease of replacement. However, for the final iteration, a small piece of 
+                glass with a reflective coating will be used. This material was challenging to source and is more fragile, so it has been reserved for the 
+                final version of the prototype.</p>
+            
+        </div>
+    </section>
+    
+<section class="software">
+    <div>
+        <h3>Software</h3>
+
+<p>The prototype includes a workout metrics application designed to demonstrate the capabilities of the smart glasses and serve as the basis for 
+    user trials.  The application displays key workout metrics such as pace, distance, and elapsed time. Additionally, it provides navigation
+     directions using an arrow indicator and distance until the next turn. It communicates with a mobile app to retrieve GPS data from the phone 
+     and uses the phone's mobile hotspot to connect to GraphHopper for route calculations.</p> 
+    </div>
+</section>
+
+<section class="project-status">
+
+    <h3>Project Status</h3>
+
+    <p>This page highlights some of the early design and prototyping work carried out during this project.  
+    I am currently making final adjustments to the prototype in preparation for user testing and evaluation, while also working on the dissertation write-up.  
+    The dissertation will detail the design process and explore the market potential of this project.</p>
+    
+    <p>Once the dissertation is complete, I plan to publish a more in-depth page with additional insights and final results.</p>
+    
+
+</section>
+    
+    <a href="../index.html" class="floating-back">Home</a>
+
+<!-- Lightbox Modal (Initially Hidden) -->
+<div id="lightbox-modal" style="display: none;">
+    <span id="lightbox-close">&times;</span>
+    <img id="lightbox-img" src="" alt="Enlarged Image">
+</div>
+
+
+
+
 </body>
 </html>
