@@ -3,78 +3,328 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Coming Soon</title>
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: Arial, sans-serif;
-        }
-
-        body {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
-            background: #121212;
-            color: #fff;
-            text-align: center;
-            padding: 20px;
-        }
-
-        .container {
-            max-width: 600px;
-            padding: 20px;
-            background: rgba(255, 255, 255, 0.1);
-            border-radius: 10px;
-            backdrop-filter: blur(10px);
-            box-shadow: 0 0 20px rgba(255, 255, 255, 0.1);
-        }
-
-        h1 {
-            font-size: 2.5rem;
-            margin-bottom: 10px;
-        }
-
-        p {
-            font-size: 1.2rem;
-            opacity: 0.8;
-        }
-
-        .loading-dots::after {
-            content: ".";
-            animation: dots 1.5s steps(3, end) infinite;
-        }
-
-        @keyframes dots {
-            0% { content: "."; }
-            33% { content: ".."; }
-            66% { content: "..."; }
-        }
-
-        .back-home {
-            display: inline-block;
-            margin-top: 20px;
-            padding: 10px 20px;
-            font-size: 1rem;
-            background: #007bff;
-            color: #fff;
-            text-decoration: none;
-            border-radius: 5px;
-            transition: background 0.3s ease;
-        }
-
-        .back-home:hover {
-            background: #0056b3;
-        }
-    </style>
+    <title>Project Name | Portfolio</title>
+    <link rel="stylesheet" href="../projectStyles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism-tomorrow.min.css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-c.min.js"></script>
 </head>
 <body>
-    <div class="container">
-        <h1> Project Details Coming Soon<span class="loading-dots"></span></h1>
-        <p>I'm currently working on adding more details about this project. Check back soon!</p>
-        <a href="/" class="back-home">Back to Home</a>
-    </div>
+
+    
+    
+      
+
+    <section class="hero" style="background-image: url('../images/Project-Thumbnails/IR_Signal.webp');">
+        <div class="blurred-bg"></div>
+        <h1>IR Signal Translator</h1> 
+    </section>
+        
+
+        <section>
+        <div class="tech-stack">
+            <h3>Technologies Used</h3>
+            <div class="tech-list">
+                <span>ESP32</span>
+                <span>Soldering</span>
+                <span>C++</span>
+            </div>
+        </div>
+    </section>
+
+
+        <section>
+        <div class="abstract">
+            <h3>Overview</h3>
+            <p>This project is an ESP32-based IR signal translator designed to act as a bridge between incompatible remote controls and devices.  
+                It captures IR signals from one remote, processes them, and transmits the corresponding signal to another device.  
+                This allows a remote intended for one brand or model to control a different device by translating commands in real time.</p>
+            
+            <p>I developed this device to solve a specific problem I encountered. I own a Firestick and a projector,  
+                and while the Firestick remote can typically be configured to control a TV's power and volume by selecting its make and model,  
+                my projector was from a lesser-known brand that wasn't listed in the Firestick's settings.  
+            
+                To work around this, I configured the Firestick remote to a random TV brand and built this device to intercept those IR signals,  
+                translate them into the correct format for my projector, and retransmit them.  
+            
+                The result is a seamless experience where the Firestick remote controls the projector as if it were officially supported,  
+                with the translation happening quietly in the background.</p>
+            
+
+
+        </div>
+        </section>
+
+        <section>
+        <div>
+            <h3>Basic Setup</h3>
+            <p>
+                The device consists of an ESP32 development board connected to an infrared receiver,  
+    which captures signals from the Firestick remote, and an infrared LED, which transmits signals to the projector.
+            </p>
+
+            <div>
+                <img src="../images/Projects/irTranslator/circuit_image.png" alt="">
+            </div>
+
+            <h4>Capturing IR Signals</h4>
+<p>Before developing the signal translation firmware, I first needed to capture the exact IR codes used by both remotes.  
+    To achieve this, I wrote a simple ESP32 program that continuously listened for incoming IR signals and printed  
+    their hexadecimal values to the serial monitor. By pressing each button on both remotes and recording the output,  
+    I was able to identify the specific signals required for translation.</p>
+
+    <pre class="language-c"><code>
+            
+#include <IRremoteESP8266.h>
+#include <IRrecv.h>
+
+const uint16_t RECV_PIN = 15;  // IR receiver connected to GPIO 15
+IRrecv irrecv(RECV_PIN);       // Create an IR receiver object
+decode_results results;        // Store received IR data
+
+void setup() {
+    Serial.begin(115200);  // Initialize serial monitor
+    irrecv.enableIRIn();   // Start the IR receiver
+}
+
+void loop() {
+    if (irrecv.decode(&results)) {
+    Serial.print("IR Code received: ");
+    Serial.println(results.value, HEX);  // Print the received IR code in hexadecimal format
+    irrecv.resume();  // Prepare for next signal
+    }
+}     
+         </code></pre>
+
+         <div class="links">
+            <a href="https://github.com/christianhay/IR-Signal-Translator.git" target="_blank">View the full code on GitHub</a>
+        </div>
+    
+        </div>
+
+
+
+    </section>
+
+
+    <section>
+
+        <div class="software">
+            <h3>Firmware</h3>
+            <p>The device continuously "listens" for incoming IR signals. When a signal is received,  
+                it is processed through a simple switch-case structure to determine the corresponding output signal for transmission.</p>
+            
+            <p><strong>This snippet highlights the key logic behind the translator’s functionality:</strong></p>
+            
+        </div>
+
+        <pre class="language-c"><code>
+            
+    // Process received IR signal
+    if (irrecv.decode(&results)) {
+        Serial.print("IR Code received: ");
+        Serial.println(results.value);  // Print the received IR code in hexadecimal format
+    
+        startTime = millis(); // Reset sleep timer
+    
+        // Handle IR signals 
+        switch (results.value) {
+        case 1086218909:  // Power
+            delay(delayinterval);
+            irsend.sendNEC(0xFF15EA);
+            Serial.println("Sending power signal");
+            presses[0]++;
+            break;
+    
+        case 1086206159:  // Volume Up
+            delay(delayinterval);
+            irsend.sendNEC(0xFF31CE);
+            Serial.println("Sending volume up signal");
+            presses[1]++;
+            break;
+    
+        case 1086232679:  // Volume Down
+            delay(delayinterval);
+            irsend.sendNEC(0xFF39C6);
+            Serial.println("Sending volume down signal");
+            presses[2]++;
+            break;
+    
+        case 1086206669:  // Mute
+            delay(delayinterval);
+            irsend.sendNEC(0xFF11EE);
+            Serial.println("Sending mute signal");
+            presses[3]++;
+            break;
+    
+        default:
+            Serial.println("Sending other signal directly to projector");
+            irsend.sendNEC(results.value);
+            break;
+        }
+    
+        irrecv.resume();  // Receive the next value
+    }
+            </code></pre>
+
+        <div class="links">
+            <a href="https://github.com/christianhay/IR-Signal-Translator.git" target="_blank">View the full code on GitHub</a>
+        </div>
+    </section>
+
+
+        <section>
+        
+            
+            <div>
+                <h3>Solving Signal Interference</h3>
+                
+                <p>One issue I initially overlooked when designing this device was IR signal interference.  
+                   Both the Firestick remote and the signal translator emit IR signals simultaneously,  
+                   which can overlap and create unreadable or meaningless signals.  
+                   As a result, neither the projector nor the ESP32 could reliably interpret commands, rendering the remote unusable.</p>
+            
+                <p>My first solution was a firmware tweak, adding a short delay between receiving a signal and transmitting the translated one.  
+                   This allowed time to release the remote button, cutting out interference. While this somewhat worked,  
+                   it made repeated button presses (such as adjusting volume) frustratingly slow, requiring users to press,  
+                   release, wait, then press again.</p>
+            
+                <p>To eliminate interference without introducing delays, I came up with a physical solution.  
+                   I positioned the IR LED from the translator directly onto the projector’s IR receiver and covered it with aluminum tape.  
+                   This setup ensured that:</p>
+            
+                <ul>
+                    <li>The projector only receives signals from the translator, preventing interference.</li>
+                    <li>The translator only reads signals from the remote, filtering out unwanted IR noise.</li>
+                </ul>
+            
+                <p>This approach maintained smooth operation, allowing the Firestick remote to function seamlessly  
+                   without lag or missed commands.</p>
+
+                   <h4>New Problem: The Projector Remote No Longer Works</h4>
+                   <p>While this setup successfully eliminated interference, it introduced a new issue—the projector's own remote  
+                      could no longer be used, for adjusting settings, since its signals were blocked by the aluminum tape.</p>
+               
+                   <p>To solve this, I modified the firmware to act as a relay, allowing the translator to forward any unrecognized signals  
+                      directly to the projector. This ensured that:</p>
+               
+                   <ul>
+                       <li>The Firestick remote still worked seamlessly with the projector.</li>
+                       <li>The projector's original remote could still be used for manual control.</li>
+                   </ul>
+               
+                   <p><strong>Key logic for the relay system:</strong></p>
+                   <pre class="language-c"><code>
+                   default:
+                       Serial.println("Sending other signal directly to projector");
+                       irsend.sendNEC(results.value);
+                       break;
+                   </code></pre>
+                   <div class="links">
+                    <a href="https://github.com/christianhay/IR-Signal-Translator.git" target="_blank">View the full code on GitHub</a>
+                </div>
+            </div>
+            
+
+
+        
+    </section>
+
+    <section>
+        <div>
+            <h3>Sleep Timer</h3>
+        
+            <p>With the translator now working well, I started thinking beyond just relaying and translating signals. 
+               Since the ESP32 had control over the projector, I decided to add a sleep timer to automatically turn it off 
+               after a period of inactivity, preventing it from staying on all night if I fell asleep.</p>
+        
+            <p>At first, the implementation seemed simple: 
+               set a timer, reset it every time a button is pressed, and if no input is detected for a set period (e.g., one hour), 
+               send the power-off signal.</p>
+        
+            <h4>Problem: No Dedicated On/Off Signals</h4>
+        
+            <p>The projector only has a single power button, rather than separate on and off signals. 
+               This meant the ESP32 couldn't simply send a power command after an hour, as it might accidentally turn the projector on 
+               instead of off.</p>
+        
+            <p>To track the projector's state, I initially planned to use a firmware-based boolean toggle, 
+               switching its state whenever the power signal was sent. However, this approach had a major flaw: 
+               the projector requires two power-off presses—one to trigger shutdown and another to confirm. 
+               If these presses happened too quickly, the projector wouldn't register the second press, 
+               potentially leaving the ESP32 out of sync with the actual power state.</p>
+        
+            <h4>Solution: Hardware-Based State Tracking</h4>
+        
+            <p>To ensure reliable tracking, I found a better approach: 
+               the projector has a USB port that only receives power when it is on. 
+               I connected a USB cable to a voltage divider to step the voltage down to 3V, 
+               then fed it into one of the ESP32's GPIO pins. 
+               This allowed the ESP32 to accurately detect when the projector was powered on, 
+               making it easy to implement the sleep timer logic reliably.</p>
+
+               
+            <div>
+                <img src="../images/Projects/irTranslator/circuit_image_usb.png" alt="">
+            </div>
+
+
+               <p><strong>Key logic for the sleep timer:</strong></p>
+               <pre class="language-c"><code>
+                // Check sleep duration and projector power state
+                now = millis();
+                if (((now - startTime) >= autoOffDuration) && digitalRead(4) == HIGH) {
+                    Serial.println("Sleep timer reached, powering off.");
+                    irsend.sendNEC(0xFF15EA); // Send first power off signal
+                    delay(10000); // Wait 10 seconds
+                    irsend.sendNEC(0xFF15EA); // Send second power off signal
+                    startTime = millis(); // Reset sleep timer
+                    delay(5000); // Further delay to avoid errors
+                }
+                
+               </code></pre>
+               <div class="links">
+                <a href="https://github.com/christianhay/IR-Signal-Translator.git" target="_blank">View the full code on GitHub</a>
+            </div>
+        </div>
+        
+    </section>
+
+
+    <section>
+        <div>
+            <h3>Future Improvements</h3>
+    
+            <p>There are several ways this IR translator could be expanded to add more functionality and automation,  
+               making it even more versatile and user-friendly.</p>
+    
+            <h4>Smart Home Integration</h4>
+            <p>Connecting the ESP32 to a smart home system would enable voice control through Alexa or Google Assistant,  
+               allowing commands like turning the projector on and off, adjusting the volume, or even setting the sleep timer.  
+               This would eliminate the need for physical remotes and make the system seamlessly integrate with existing home automation setups.</p>
+    
+            <h4>Custom Remote Mapping</h4>
+            <p>A learning mode could be implemented, allowing users to program custom remote buttons  
+               without modifying the firmware manually. This would make the device more user-friendly,  
+               enabling support for a wider range of devices without requiring additional coding.  
+               Such a feature could also open possibilities for commercialization,  
+               making the translator a more widely applicable consumer product.</p>
+    
+            <h4>Mobile App Integration</h4>
+            <p>Integrating the translator with a mobile app would provide a simple interface for adjusting settings  
+               such as sleep timer duration, signal delay intervals, or even manually triggering IR commands.  
+               This would offer more flexibility and convenience, eliminating the need to reflash firmware  
+               whenever adjustments are needed.</p>
+        </div>
+    </section>
+    
+
+    
+
+    
+    <a href="../index.html" class="floating-back">Home</a>
+
+
+
 </body>
 </html>
